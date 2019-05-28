@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+             <ScrollPane fx:id="scroll_original" prefHeight="468.0" prefWidth="515.0">
+             <content>
+            <ImageView fx:id="image_ori_view" fitHeight="463.0" fitWidth="500.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@noimage.png" />
+                     </image></ImageView>
+             </content>
+             </ScrollPane>
+            <ScrollPane fx:id="scroll_changed" prefHeight="468.0" prefWidth="515.0">
+              <content>
+                        <ImageView fx:id="image_view" fitHeight="463.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" />
+              </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+            <Menu id="image_btn" fx:id="new_image_btn" mnemonicParsing="false" text="Image">
+                <items>
+                    <MenuItem fx:id="new_image_mi" mnemonicParsing="false" onAction="#new_image" text="new image" />
+                    <MenuItem fx:id="search_for_image" mnemonicParsing="false" onAction="#search_image_dcm" text="search image" />
+                    <MenuItem fx:id="clear_image_mi" mnemonicParsing="false" onAction="#clear_image" text="clear app" />
+                </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <Accordion BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane animated="false" text="K-means">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="k_start_btn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#kmeans_start" text="Start segmentation" />
+                        <Label fx:id="k_timer_lbl" text="Start" />
+                        <Label text="number of clusters" />
+                        <TextField fx:id="numberOfClusters" promptText="3//integer input" />
+                     </children>
+                  </VBox>
+               </content>
+          </TitledPane>
+          <TitledPane animated="false" text="Canny Edge Detection">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#canny_start" text="Start Edge Detection" />
+                        <Label fx:id="timer_lbl" text="start" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Gaussian Kernel size" />
+                              <TextField fx:id="kernel_size_tf" promptText="8//Integer input" />
+                              <Label text="Gaussian sigma" />
+                              <TextField fx:id="sigma_tf" promptText="2//float input" />
+                              <Label text="low treshold" />
+                              <TextField fx:id="low_treshold_tf" promptText="1//float input" />
+                              <Label text="high treshold" />
+                              <TextField fx:id="high_treshold_tf" promptText="2//float input" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </left>
+</BorderPane>
